@@ -1,0 +1,11 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,vat_required:"
+msgid "VAT Required"
+msgstr "Identificador fiscal no requerido"
+
+msgctxt "model:ir.message,text:msg_not_tax_identifier"
+msgid "There are invoices without tax_identifier. \"%(invoices)s\""
+msgstr "Hay facturas sin identificador fiscal. \"%(invoices)s\""
