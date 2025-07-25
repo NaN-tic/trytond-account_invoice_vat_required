@@ -4,7 +4,6 @@ from trytond.i18n import gettext
 from trytond.exceptions import UserWarning
 
 
-
 class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
 
@@ -15,8 +14,7 @@ class Invoice(metaclass=PoolMeta):
         Warning = pool.get('res.user.warning')
         to_warn = []
         for invoice in invoices:
-            party = invoice.party
-            if party.vat_required:
+            if not invoice.party.vat_required:
                 continue
             if not invoice.party_tax_identifier:
                 to_warn.append(invoice)
@@ -28,5 +26,4 @@ class Invoice(metaclass=PoolMeta):
                 raise UserWarning(key,
                     gettext('account_invoice_vat_required.msg_not_tax_identifier',
                             invoices=names))
-
         super().post(invoices)
