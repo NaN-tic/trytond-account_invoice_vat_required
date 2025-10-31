@@ -6,6 +6,6 @@ msgctxt "field:party.party,vat_required:"
 msgid "VAT Required"
 msgstr "Identificador fiscal requerido"
 
-msgctxt "model:ir.message,text:msg_not_tax_identifier"
+msgctxt "model:ir.message,text:msg_missing_party_tax_identifier"
 msgid "There are invoices without tax_identifier. \"%(invoices)s\""
 msgstr "Hay facturas sin identificador fiscal. \"%(invoices)s\""
