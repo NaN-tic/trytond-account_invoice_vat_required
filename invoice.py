@@ -13,6 +13,8 @@ class Invoice(metaclass=PoolMeta):
         pool = Pool()
         Warning = pool.get('res.user.warning')
 
+        super().post(invoices)
+
         to_warn = []
         for invoice in invoices:
             if not invoice.party.vat_required:
@@ -34,4 +36,3 @@ class Invoice(metaclass=PoolMeta):
             raise UserError(gettext('account_invoice_vat_required.'
                     'msg_missing_company_tax_identifier', invoices=names))
 
-        super().post(invoices)

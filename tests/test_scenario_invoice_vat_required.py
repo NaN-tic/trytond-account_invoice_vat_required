@@ -25,11 +25,8 @@ class Test(unittest.TestCase):
         super().tearDown()
 
     def test(self):
-
-        # Install account_invoice_vat_required Module
         activate_modules('account_invoice_vat_required')
 
-        # Create company
         _ = create_company()
         company = get_company()
 
@@ -142,7 +139,6 @@ class Test(unittest.TestCase):
         invoice3.company = company
         invoice3.party = party
         invoice3.payment_term = payment_term
-        invoice3.tax_identifier = company_tax_identifier
         line = invoice3.lines.new()
         line.product = product
         line.account = revenue
