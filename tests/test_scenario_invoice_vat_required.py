@@ -88,7 +88,7 @@ class Test(unittest.TestCase):
         payment_term.save()
         # Test 1: Create invoice without tax_identifier -> UserError
         Invoice = Model.get('account.invoice')
-        invoice = Invoice()
+        invoice = Invoice(type='out')
         invoice.company = company
         invoice.party = party
         invoice.payment_term = payment_term
@@ -117,7 +117,7 @@ class Test(unittest.TestCase):
         party2.vat_required = True
         party2.save()
 
-        invoice2 = Invoice()
+        invoice2 = Invoice(type='out')
         invoice2.company = company
         invoice2.party = party2
         invoice2.payment_term = payment_term
@@ -135,7 +135,7 @@ class Test(unittest.TestCase):
         self.assertEqual(invoice2.state, 'draft')
 
         # Test 3: Create invoice with both tax_identifier and party_tax_identifier -> post successfully
-        invoice3 = Invoice()
+        invoice3 = Invoice(type='out')
         invoice3.company = company
         invoice3.party = party
         invoice3.payment_term = payment_term
