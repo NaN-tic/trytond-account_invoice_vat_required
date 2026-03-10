@@ -30,7 +30,8 @@ class Invoice(metaclass=PoolMeta):
                     gettext('account_invoice_vat_required.'
                         'msg_missing_party_tax_identifier', invoices=names))
 
-        to_raise = [x for x in invoices if not x.tax_identifier]
+        to_raise = [x for x in invoices
+            if not x.tax_identifier and x.company.party.vat_required]
         if to_raise:
             names = ', '.join([x.rec_name for x in to_raise])
             raise UserError(gettext('account_invoice_vat_required.'
